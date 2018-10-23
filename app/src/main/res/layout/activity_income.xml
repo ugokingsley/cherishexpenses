@@ -62,7 +62,6 @@
         android:text="@string/add_button"
         style="@style/TextAppearance.AppCompat.Large"
         android:textColor="@android:color/primary_text_dark"
-        android:background="@color/colorPrimary"
-        android:onClick="onClickAddIncome"/>
+        android:background="@color/colorPrimary" />
 
 </LinearLayout>
