@@ -35,29 +35,24 @@ public class AddExpenseActivity extends AppCompatActivity {
         }
 
         long date = ((CalendarView) findViewById(R.id.calendarViewExpense)).getDate();
-        if (date == 0) {
-            return;
-        }
 
 
-
-        // Insert new task data via a ContentResolver
+        // Insert new expenses data via a ContentResolver
         // Create new empty ContentValues object
         ContentValues contentValues = new ContentValues();
-        // Put the task description and selected mPriority into the ContentValues
+
         contentValues.put(ExpenseContract.ExpenseEntry.COLUMN_TITLE, title);
         contentValues.put(ExpenseContract.ExpenseEntry.COLUMN_DATE, date);
         // Insert the content values via a ContentResolver
         Uri uri = getContentResolver().insert(ExpenseContract.ExpenseEntry.CONTENT_URI, contentValues);
 
         // Display the URI that's returned with a Toast
-        // [Hint] Don't forget to call finish() to return to MainActivity after this insert is complete
         if(uri != null) {
             Toast.makeText(getBaseContext(), uri.toString(), Toast.LENGTH_LONG).show();
         }
 
         // Finish activity (this returns back to MainActivity)
-        finish();
+        //finish();
 
     }
 }

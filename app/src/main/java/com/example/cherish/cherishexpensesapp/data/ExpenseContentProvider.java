@@ -13,7 +13,7 @@ import android.support.annotation.NonNull;
 
 import static com.example.cherish.cherishexpensesapp.data.ExpenseContract.ExpenseEntry.TABLE_NAME;
 
-// Verify that ExpenseContentProvider extends from ContentProvider and implements required methods
+
 public class ExpenseContentProvider extends ContentProvider {
 
     // Defines final integer constants for the directory of expenses and a single item.
@@ -22,10 +22,9 @@ public class ExpenseContentProvider extends ContentProvider {
     public static final int EXPENSES = 100;
     public static final int EXPENSE_WITH_ID = 101;
 
-    // CDeclare a static variable for the Uri matcher that you construct
+
     private static final UriMatcher sUriMatcher = buildUriMatcher();
 
-    // Define a static buildUriMatcher method that associates URI's with their int match
     /**
      Initialize a new matcher object without any matches,
      then use .addURI(String authority, String path, int match) to add matches
@@ -40,8 +39,8 @@ public class ExpenseContentProvider extends ContentProvider {
           For each kind of uri you may want to access, add the corresponding match with addURI.
           The two calls below add matches for the task directory and a single item by ID.
          */
-        uriMatcher.addURI(ExpenseContract.AUTHORITY, ExpenseContract.PATH_ESPENSES, EXPENSES);
-        uriMatcher.addURI(ExpenseContract.AUTHORITY, ExpenseContract.PATH_ESPENSES + "/#", EXPENSE_WITH_ID);
+        uriMatcher.addURI(ExpenseContract.AUTHORITY, ExpenseContract.PATH_EXPENSES, EXPENSES);
+        uriMatcher.addURI(ExpenseContract.AUTHORITY, ExpenseContract.PATH_EXPENSES + "/#", EXPENSE_WITH_ID);
 
         return uriMatcher;
     }
@@ -66,7 +65,7 @@ public class ExpenseContentProvider extends ContentProvider {
     // Implement insert to handle requests to insert a single new row of data
     @Override
     public Uri insert(@NonNull Uri uri, ContentValues values) {
-        // Get access to the task database (to write new data to)
+        // Get access to the expenses database (to write new data to)
         final SQLiteDatabase db = mExpenseDbHelper.getWritableDatabase();
 
         // Write URI matching code to identify the match for the expenses directory
@@ -145,9 +144,6 @@ public class ExpenseContentProvider extends ContentProvider {
         int match = sUriMatcher.match(uri);
         // Keep track of the number of deleted expenses
         int expensesDeleted; // starts as 0
-
-        // Write the code to delete a single row of data
-        // [Hint] Use selections to delete an item by its row ID
         switch (match) {
             // Handle the single item case, recognized by the ID included in the URI path
             case EXPENSE_WITH_ID:
