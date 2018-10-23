@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">CherishExpensesApp</string>
+    <string name="action_settings">Surplus / Deficits</string>
+    <string name="add_button">Add</string>
+    <string name="expense_title">Enter Expense For Today</string>
+    <string name="income_title">Enter Monthly Income</string>
+    <string name="date_string">Date</string>
+    <string name="expense_activity_title">Enter New Expense</string>
+    <string name="income_activity_title">Enter Income</string>
+</resources>
